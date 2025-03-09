@@ -1,18 +1,18 @@
 #!/usr/bin/env groovy
 
-def gv
+def gv  // Global variable to hold the loaded script
 
 pipeline {
-    agent any
+    agent any  // Run on any available agent
     tools {
-        node 'node-23.9'
+        node 'node-23.9'  // Use Node.js version 23.9 (ensure this is configured in Jenkins)
     }
 
     stages {
-
         stage("init") {
             steps {
                 script {
+                    // Load the Groovy script from the workspace
                     gv = load "script.groovy"
                 }
             }
@@ -21,44 +21,9 @@ pipeline {
         stage("First Step") {
             steps {
                 script {
-                    echo 'Acum ruleaza primul pas din pipeline'
+                    echo 'Acum ruleaza primul pas din pipeline'  // Echo a message
                 }
             }
         }
-
-
-        stage("build jar") {
-            steps {
-                script{
-
-                }
-            }
-        }
-
-        stage("build the docker image") {
-            steps {
-                script{
-
-                }
-            }
-        }
-
-        stage("deploy app") {
-            steps {
-                script{
-
-                }
-            }
-        }
-
-        stage('commit version update') {
-            steps {
-                script {
-
-                }
-            }
-        }
-
     }
-
 }
