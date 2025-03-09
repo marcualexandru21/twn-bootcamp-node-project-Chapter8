@@ -5,7 +5,7 @@ def gv  // Global variable to hold the loaded script
 pipeline {
     agent any  // Run on any available agent
     tools {
-        node 'node-23.9'  // Use Node.js version 23.9 (ensure this is configured in Jenkins)
+        nodejs 'node-23.9'  // Use Node.js version 23.9 (ensure this is configured in Jenkins)
     }
 
     stages {
