@@ -1,0 +1,17 @@
+# Ignore the .git directory
+.git
+
+# Ignore IDE-specific files
+.idea
+
+# Ignore node_modules (if not needed in the build context)
+node_modules
+
+# Ignore local environment files
+.env
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+tmp
