@@ -8,7 +8,7 @@ pipeline {
         nodejs 'node-23.9'  // Use Node.js version 23.9 (ensure this is configured in Jenkins)
     }
 
-    stages {
+  /*  stages {
         stage("init") {
             steps {
                 script {
@@ -16,7 +16,7 @@ pipeline {
                     gv = load "script.groovy"
                 }
             }
-        }
+      */  }
 
         stage("First Step") {
             steps {
