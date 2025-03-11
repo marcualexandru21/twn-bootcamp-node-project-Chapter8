@@ -36,10 +36,13 @@ pipeline {
         stage("increment version and get version") {
             steps {
                 script {
-                   sh 'npm version patch'
-                   def version = sh(script: 'npm pkg get version', returnStdout: true).trim()
-                   def bar = "-"
-                   IMAGE_NAME = "${IMAGE_NAME}${version}${bar}${BUILD_NUMBER}"
+                   sh '''
+                       cd ./app/
+                       npm version patch
+                       def version = sh(script: 'npm pkg get version', returnStdout: true).trim()
+                       def bar = "-"
+                       IMAGE_NAME = "${IMAGE_NAME}${version}${bar}${BUILD_NUMBER}"
+                   '''
                 }
             }
         }
