@@ -25,8 +25,10 @@ pipeline {
         stage("npm install") {
             steps {
                 script {
-                    sh 'cd ./app/'
-                    sh 'npm install'
+                    sh '''
+                         cd ./app/
+                        npm install
+                    '''
                 }
             }
         }
