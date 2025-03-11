@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-        stage("config name and email") {
+/*      stage("config name and email") {
             steps {
                 script {
                    configNameAndEmail "${NAME}" "${EMAIL}"
@@ -95,6 +95,27 @@ pipeline {
                 }
             }
         }
+*/
+        stage("Push to Remote URL") {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${CREDENTIALS_ID_GITHUB}", passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                        sh 'git config user.email "${EMAIL}"'
+                        sh 'git config user.name "${NAME}"'
+
+                        sh 'git status'
+                        sh 'git branch'
+                        sh 'git config --list'
+
+                        sh "git remote set-url origin https://${USER}:${PASS}@${REMOTE_URL}"
+                        sh 'git add .'
+                        sh 'git commit -m "ci: version bump"'
+                        sh "git push origin HEAD:${PUSH_BRANCH_NAME}"
+                    }
+                }
+            }
+        }
+
 
     }
 
