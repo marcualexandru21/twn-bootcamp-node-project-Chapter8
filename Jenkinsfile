@@ -25,7 +25,7 @@ pipeline {
         stage("npm install") {
             steps {
                 script {
-                    sh 'cd app'
+                    sh 'cd ./app/'
                     sh 'npm install'
                 }
             }
