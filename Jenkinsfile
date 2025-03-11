@@ -39,10 +39,11 @@ pipeline {
                    sh '''
                        cd ./app/
                        npm version patch
-                       def version = sh(script: 'npm pkg get version', returnStdout: true).trim()
-                       def bar = "-"
-                       IMAGE_NAME = "${IMAGE_NAME}${version}${bar}${BUILD_NUMBER}"
                    '''
+                   def version = sh(script: 'cd ./app/ && npm pkg get version', returnStdout: true).trim()
+                   def bar = "-"
+                   IMAGE_NAME = "${IMAGE_NAME}${version}${bar}${BUILD_NUMBER}"
+
                 }
             }
         }
